@@ -1,0 +1,15 @@
+# SAPEON SW developer environment
+
+## Introduction
+
+This repo is for the development environment for on-card software. It contains:
+
+1. This README
+2. Containerfile specifying required packages for building/testing code
+3. Infrastructure (scripts) for performing common tasks
+
+
+## Building the container
+
+The container can be built from the `Containerfile` included here, with the command `docker build `
+

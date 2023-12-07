@@ -7,6 +7,12 @@ This repo is for the development environment for on-card software. It contains:
 1. This README
 2. Containerfiles specifying required packages for building/testing code on Ubuntu 22 and Rocky Linux
 
+## Prerequisites
+
+- Add a GitHub SSH key or personal access token
+- Authorize it on the SAPEON-AI organization
+- Be added to the SAPEON-AI organization on Github
+- Clone this repo
 
 ## Building a container
 

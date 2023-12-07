@@ -1,8 +1,11 @@
-# Base our container on Rocky Linux since it's RHEL like but open-source
+# Ubuntu 22.04 is the newest LTS ubuntu
 FROM ubuntu:22.04
 
-
+# Install some kernel headers
 RUN apt update
 RUN apt install -y linux-headers-5.15.0-89-generic
 
-ENTRYPOINT /bin/bash
+# Set $PS1 so we know it's a docker
+RUN echo 'export PS1="[\u@ubuntu_container] \W # "' >> /root/.bashrc
+
+SHELL ["/bin/bash", "-l", "-c"]

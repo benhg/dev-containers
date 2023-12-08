@@ -1,0 +1,14 @@
+make
+gcc
+flex
+bison
+build-essential
+dkms
+libssl-dev
+curl
+wget
+git
+python3
+python3-pip
+cmake
+meld

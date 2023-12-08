@@ -5,6 +5,11 @@ FROM ubuntu:22.04
 RUN apt update
 RUN apt install -y linux-headers-5.15.0-89-generic
 
+# Install required packages from txt file
+COPY ./required_packages.txt .
+RUN cat ./required_packages.txt | xargs apt install -y
+RUN rm required_packages.txt
+
 # Set $PS1 so we know it's a docker
 RUN echo 'export PS1="[\u@ubuntu_container] \W # "' >> /root/.bashrc
 

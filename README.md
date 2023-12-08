@@ -69,7 +69,9 @@ benglick@Bens-MacBook-Pro sw_env % docker run -v/Users/benglick:/mnt/home -it ub
 
 Results in creating an Ubuntu-like shell where you can use all the Linux commands you'd normally expect.
 
-Additionally, since the `-v/Users/benglick:/mnt/home` flag was passed, I can access files in my home directory on my laptop at `/mnt/home` inside the container:
+Additionally, since the `-v/Users/benglick:/mnt/home` flag was passed, files in my home directory on my laptop at `/mnt/home` are accessible inside the container:
+
+Note that the `-v` arguments (and any other named parameters) need to come before the tag.
 
 ```
 [root@ubuntu_container] / # ls /mnt/home/Desktop/
@@ -83,3 +85,17 @@ benglick@Bens-MacBook-Pro log % ls /Users/benglick/Desktop | grep written_by_con
 written_by_container
 ```
 
+To start additional processes in the existing container, first find the running container's ID with `docker ps`:
+
+```
+benglick@Bens-MacBook-Pro log % docker ps
+CONTAINER ID   IMAGE        COMMAND       CREATED         STATUS         PORTS     NAMES
+830222986bbc   ubuntu_dev   "/bin/bash"   2 seconds ago   Up 2 seconds             modest_rosalind
+```
+
+With that, you can use `docker exec` to start additional processes:
+
+```
+benglick@Bens-MacBook-Pro log % docker exec -it 830222986bbc /bin/bash
+[root@ubuntu_container] / # 
+```

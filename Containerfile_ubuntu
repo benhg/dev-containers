@@ -1,8 +1,0 @@
-# Base our container on Rocky Linux since it's RHEL like but open-source
-FROM ubuntu:22.04
-
-
-RUN apt update
-RUN apt install -y linux-headers-5.15.0-89-generic
-
-ENTRYPOINT /bin/bash

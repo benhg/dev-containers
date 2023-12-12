@@ -1,7 +1,0 @@
-# Base our container on Rocky Linux since it's RHEL like but open-source
-FROM rockylinux:9.3
-
-RUN yum install kernel-headers
-
-ENTRYPOINT /bin/bash
-

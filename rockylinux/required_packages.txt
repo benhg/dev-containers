@@ -1,0 +1,8 @@
+make
+gcc
+flex
+bison
+dkms
+openssl-devel
+wget
+git

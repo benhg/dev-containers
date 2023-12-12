@@ -1,0 +1,19 @@
+# Base our container on Rocky Linux since it's RHEL like but open-source
+FROM rockylinux:9.3
+
+# Install EPEL
+RUN dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+RUN dnf config-manager --enable epel
+
+# TODO: figure out how to install different kernel-headers versions
+# RUN dnf install -y kernel-headers
+
+# Install required packages from txt file
+COPY ./required_packages.txt .
+RUN cat ./required_packages.txt | xargs dnf install -y --nobest
+RUN rm required_packages.txt
+
+# Set $PS1 so we know it's a docker
+RUN echo 'export PS1="[\u@rhel_container] \W # "' >> /root/.bashrc
+
+SHELL ["/bin/bash", "-l", "-c"]
